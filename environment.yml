@@ -1,0 +1,12 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python
+  - sra-tools
+  - zstd
+  - isa-l
+  - lzop
+  - lz4-c
+  - bzip2
