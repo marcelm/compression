@@ -8,11 +8,13 @@ import subprocess
 # pigz
 
 PROGRAMS = {
+    "bgzip": range(1, 7),
     "igzip": range(1, 4),
     "lzop": [1],
     "zstd": range(1, 10),
     "gzip": range(1, 10),
-    "lz4": range(1, 10),
+    "lz4": range(1, 7),
+    "xz": range(1, 3),
 }
 
 
@@ -21,8 +23,12 @@ def measure(program: str, level: int, path: str, n: int) -> (float, float):
     return pair (compressed size, elapsed wall-clock time)
     """
     if level is not None:
-        command = f"{program} -{level} < {path}"
-        args = [program, f"-{level}"]
+        if program == "bgzip":
+            command = f"{program} -l {level} < {path}"
+            args = [program, "-l", str(level)]
+        else:
+            command = f"{program} -{level} < {path}"
+            args = [program, f"-{level}"]
     else:
         command = f"{program} < {path}"
         args = [program]
