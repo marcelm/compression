@@ -8,6 +8,8 @@ import subprocess
 # pigz
 
 PROGRAMS = {
+    "crabz": range(1, 7),
+    "pigz": range(1, 7),
     "bgzip": range(1, 7),
     "igzip": range(1, 4),
     "lzop": [1],
@@ -26,6 +28,12 @@ def measure(program: str, level: int, path: str, n: int) -> (float, float):
         if program == "bgzip":
             command = f"{program} -l {level} < {path}"
             args = [program, "-l", str(level)]
+        elif program == "crabz":
+            command = f"{program} -l {level} -p 1 < {path}"
+            args = [program, "-l", str(level), "-p", "1"]
+        elif program == "pigz":
+            command = f"{program} -{level} -p 1 < {path}"
+            args = [program, f"-{level}", "-p", "1"]
         else:
             command = f"{program} -{level} < {path}"
             args = [program, f"-{level}"]

@@ -10,3 +10,6 @@ dependencies:
   - lzop
   - lz4-c
   - bzip2
+  - crabz
+  - pigz
+

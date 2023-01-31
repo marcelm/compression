@@ -28,3 +28,8 @@ fastq-dump --split-3 --defline-qual '+' --defline-seq '@$sn' ERR1760498
 fastq-dump --defline-qual '+' --defline-seq '@$ac.$si' SRR2174302
 
 
+# crabz
+
+git clone git@github.com:sstadick/crabz.git
+rm crabzdata.txt
+for i in {1..100}; do cat crabz/bench-data/shakespeare.txt >> crabzdata.txt; done
