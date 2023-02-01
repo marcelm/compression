@@ -1,7 +1,9 @@
-mamba env create -n compression --file environment.yml
+Playground for compression benchmarks.
+
+    mamba env create -n compression --file environment.yml
 
 
-datasets:
+Some suitable datasets:
 
 - ERR1760498
 - SRR020285
